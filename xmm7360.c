@@ -1272,7 +1272,8 @@ static int xmm7360_tty_write(struct tty_struct *tty,
 	return written;
 }
 
-static int xmm7360_tty_write_room(struct tty_struct *tty)
+//TODO: 5.13 uses int, 5.14 uses unsigned int
+static unsigned int xmm7360_tty_write_room(struct tty_struct *tty)
 {
 	struct queue_pair *qp = tty->driver_data;
 	if (!xmm7360_qp_can_write(qp))
